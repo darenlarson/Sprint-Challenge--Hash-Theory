@@ -23,6 +23,8 @@ Answer *get_indices_of_item_weights(int *weights, int length, int limit)
       output->index_2 = i;
       output->index_1 = hash_table_retrieve(ht, comp);
 
+      destroy_hash_table(ht);
+      
       return output;
     }
   }
