@@ -73,5 +73,5 @@ A     B     C      carry   sum
 1     1     0        1      0
 1     1     1        1      1
 ```
-* SUM = ?
-* CARRY = ?
+* SUM = is 0 if A,B,C are all 0, or if two of them are are 1; is 1 if one of A,B,C are 1, or if all them are 1
+* CARRY = is 0 if A,B,C are all 0, or if only one of them are 1; is 1 if more than one of A,B,C are 1. This is bc we are adding with base 2, so we need to "carry over" if we hit 2 in the sum column.
