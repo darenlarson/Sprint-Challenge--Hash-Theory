@@ -3,14 +3,35 @@
 #include "hashtable.h"
 #include "ex1.h"
 
+
 Answer *get_indices_of_item_weights(int *weights, int length, int limit)
 {
   HashTable *ht = create_hash_table(16);
 
-  // YOUR CODE HERE
+  // Build the hash table w/ key = weights, value = index in array
+  for (int i = 0; i < length; i++) {
+    hash_table_insert(ht, weights[i], i);
+  }
+
+  // Loop over weights array, looking to see if compliment exists in hash table
+  for (int i = 0; i < length; i++) {
+    int weight = weights[i];
+    int comp = limit - weight;
+
+    if (hash_table_retrieve(ht, comp) != -1) {
+      Answer *output = malloc(sizeof(Answer *));
+      output->index_2 = i;
+      output->index_1 = hash_table_retrieve(ht, comp);
+
+      return output;
+    }
+  }
+
 
   return NULL;
 }
+
+
 
 void print_answer(Answer *answer)
 {
